@@ -38,6 +38,8 @@ const NotesAddForm = () => {
         type='text'
         name='description'
         label='Description'
+        multiline={true}
+        rows={3}
         InputProps={{
           className: 'notesAddForm__input',
         }}
