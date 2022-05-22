@@ -26,6 +26,7 @@ const NoteList = () => {
 
   const mainRow = [
     'ID',
+    'Created at:',
     'Title',
     'Description',
     'Favorite',
@@ -71,13 +72,25 @@ const NoteList = () => {
     element.parentNode.removeChild(element);
   };
 
+  const handleDownloadAll = () => {
+    const element = document.createElement('a');
+    const file = new Blob([JSON.stringify(notes)], {
+      type: 'text/plain',
+    });
+    element.href = URL.createObjectURL(file);
+    element.download = `All-notes.txt`;
+    document.body.appendChild(element);
+    element.click();
+    element.parentNode.removeChild(element);
+  };
+
   return (
     notes.length > 0 && (
       <Box className='noteList'>
         {/* <Button onClick={downloadTxtFile}>Click</Button> */}
         <TextField
           sx={{ marginBottom: '2rem' }}
-          placeholder='Search for note'
+          placeholder='Search for Note'
           onChange={(e) => setSearchValue(e.target.value)}
         />
         <TableContainer sx={{ maxWidth: '80vw' }} component={Paper}>
@@ -95,6 +108,7 @@ const NoteList = () => {
               {currentNotes.map((note) => (
                 <TableRow key={note.id}>
                   <TableCell align='center'>{note.id}</TableCell>
+                  <TableCell align='center'>{note.createdAt}</TableCell>
                   <TableCell align='center'>{note.title}</TableCell>
                   <TableCell align='center'>{note.description}</TableCell>
                   <TableCell align='center'>
@@ -111,7 +125,9 @@ const NoteList = () => {
                     )}
                   </TableCell>
                   <TableCell align='center'>
-                    <EditIcon className='icon' />
+                    <Link to={`/${note.id}`}>
+                      <EditIcon className='icon' />
+                    </Link>
                   </TableCell>
                   <TableCell align='center'>
                     <DeleteIcon
@@ -136,9 +152,14 @@ const NoteList = () => {
           page={currentPage}
           onChange={handlePaginationChange}
         />
-        <Link to={'favorites'} className={'link'}>
-          <Button variant='outlined'>Check your favorite list</Button>
-        </Link>
+        <Box className='noteList__buttons'>
+          <Link to={'favorites'} className={'link'}>
+            <Button variant='outlined'>Check your favorite list</Button>
+          </Link>
+          <Button onClick={handleDownloadAll} variant='outlined'>
+            Download All Notes
+          </Button>
+        </Box>
       </Box>
     )
   );
