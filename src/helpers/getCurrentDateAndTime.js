@@ -1,7 +1,8 @@
-export const getCurrentDateAndTime = (date = new Date()) => {
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
+export const getCurrentDateAndTime = () => {
+  const date = new Date();
   const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
   const hours = date.getHours();
   const minutes = date.getMinutes();
 

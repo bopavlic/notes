@@ -17,6 +17,7 @@ import { deleteNote, favoriteNote } from '../../features/notes/notesSlice';
 import { Button, Pagination, TextField } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { filterRow } from '../../helpers/filterRow';
+import { handleDownloadFile } from '../../helpers/handleDownloadFile';
 
 const NoteList = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -55,34 +56,6 @@ const NoteList = () => {
   const handlePaginationChange = (e, value) => {
     e.preventDefault();
     setCurrentPage(value);
-  };
-
-  const handleDownloadTxtFile = (id) => {
-    const currentNote = notes.find((note) => note.id === id);
-    const element = document.createElement('a');
-    const file = new Blob([JSON.stringify(currentNote)], {
-      type: 'text/plain',
-    });
-    element.href = URL.createObjectURL(file);
-    element.download = `${currentNote.title}.txt`;
-    // Append to html link element page
-    document.body.appendChild(element);
-    // Start download
-    element.click();
-    // Clean up and remove the link
-    element.parentNode.removeChild(element);
-  };
-
-  const handleDownloadAll = () => {
-    const element = document.createElement('a');
-    const file = new Blob([JSON.stringify(notes)], {
-      type: 'text/plain',
-    });
-    element.href = URL.createObjectURL(file);
-    element.download = `All-notes.txt`;
-    document.body.appendChild(element);
-    element.click();
-    element.parentNode.removeChild(element);
   };
 
   return (
@@ -125,7 +98,7 @@ const NoteList = () => {
                     )}
                   </TableCell>
                   <TableCell align='center'>
-                    <Link to={`/${note.id}`}>
+                    <Link to={`/${note.id}`} className={'link'}>
                       <EditIcon className='icon' />
                     </Link>
                   </TableCell>
@@ -138,7 +111,7 @@ const NoteList = () => {
                   <TableCell align='center'>
                     <DownloadIcon
                       className='icon'
-                      onClick={() => handleDownloadTxtFile(note.id)}
+                      onClick={() => handleDownloadFile(notes, note.id)}
                     />
                   </TableCell>
                 </TableRow>
@@ -156,7 +129,7 @@ const NoteList = () => {
           <Link to={'favorites'} className={'link'}>
             <Button variant='outlined'>Check your favorite list</Button>
           </Link>
-          <Button onClick={handleDownloadAll} variant='outlined'>
+          <Button onClick={() => handleDownloadFile(notes)} variant='outlined'>
             Download All Notes
           </Button>
         </Box>
