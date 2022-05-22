@@ -6,6 +6,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `docker run -d -p 3000:3000 --name container-docker-notes docker-notes`
+Runs the docker at localhost:3000.
+
 ### `yarn start`
 
 Runs the app in the development mode.\
