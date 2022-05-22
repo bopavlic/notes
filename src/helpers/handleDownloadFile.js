@@ -1,5 +1,5 @@
 export const handleDownloadFile = (array, id = -1) => {
-  const currentElement = array.find((note) => note.id === id);
+  const currentElement = array.find((el) => el.id === id);
   const link = document.createElement('a');
   const file = new Blob(
     [JSON.stringify(currentElement ? currentElement : array)],

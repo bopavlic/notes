@@ -1,12 +1,13 @@
+import Box from '@mui/material/Box';
 import NoteList from './NoteList';
 import NotesAddForm from './NotesAddForm';
 
 const Notes = () => {
   return (
-    <div>
+    <Box>
       <NotesAddForm />
       <NoteList />
-    </div>
+    </Box>
   );
 };
 

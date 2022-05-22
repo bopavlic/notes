@@ -33,6 +33,7 @@ const NotesAddForm = () => {
         value={formValues.title}
         onChange={handleFieldChange}
         required
+        data-qa='title'
       />
       <TextField
         type='text'
@@ -43,11 +44,12 @@ const NotesAddForm = () => {
         InputProps={{
           className: 'notesAddForm__input',
         }}
-        value={formValues.note}
+        value={formValues.description}
         onChange={handleFieldChange}
         required
+        data-qa='description'
       />
-      <Button variant='contained' type={'submit'}>
+      <Button variant='contained' type={'submit'} data-qa='add-note-button'>
         Submit
       </Button>
     </form>
