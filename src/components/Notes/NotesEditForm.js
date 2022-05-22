@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useNavigate, useParams } from 'react-router-dom';
 import { editNote } from '../../features/notes/notesSlice';
+import _ from 'lodash';
 
 const NotesEditForm = () => {
   const { id } = useParams();
@@ -25,6 +26,11 @@ const NotesEditForm = () => {
       [event.target.name]: event.target.value,
     }));
   };
+
+  const checkIsEqual = useMemo(
+    () => _.isEqual(formValues, currentNote),
+    [formValues, currentNote]
+  );
 
   return (
     <form onSubmit={handleFormSubmit} className='notesAddForm'>
@@ -52,7 +58,7 @@ const NotesEditForm = () => {
         onChange={handleFieldChange}
         required
       />
-      <Button variant='contained' type={'submit'}>
+      <Button variant='contained' type={'submit'} disabled={checkIsEqual}>
         Submit
       </Button>
     </form>
