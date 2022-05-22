@@ -27,7 +27,7 @@ const NoteList = () => {
 
   const mainRow = [
     'ID',
-    'Created at:',
+    'Created at',
     'Title',
     'Description',
     'Favorite',
