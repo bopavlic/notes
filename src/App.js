@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import FavoriteNotes from './components/Notes/FavoriteNotes';
+import FavoriteNotes from './components/Notes/Favorites/FavoriteNotes';
 import Notes from './components/Notes/Notes';
 import NotesEditForm from './components/Notes/NotesEditForm';
 import './styles/global.scss';
