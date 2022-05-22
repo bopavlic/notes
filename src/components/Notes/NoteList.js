@@ -16,6 +16,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { deleteNote, favoriteNote } from '../../features/notes/notesSlice';
 import { Button, Pagination, TextField } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { filterRow } from '../../helpers/filterRow';
 
 const NoteList = () => {
   const [searchValue, setSearchValue] = useState('');
@@ -87,10 +88,9 @@ const NoteList = () => {
   return (
     notes.length > 0 && (
       <Box className='noteList'>
-        {/* <Button onClick={downloadTxtFile}>Click</Button> */}
         <TextField
           sx={{ marginBottom: '2rem' }}
-          placeholder='Search for Note'
+          placeholder='Search By Title...'
           onChange={(e) => setSearchValue(e.target.value)}
         />
         <TableContainer sx={{ maxWidth: '80vw' }} component={Paper}>
@@ -105,7 +105,7 @@ const NoteList = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {currentNotes.map((note) => (
+              {filterRow(currentNotes, searchValue).map((note) => (
                 <TableRow key={note.id}>
                   <TableCell align='center'>{note.id}</TableCell>
                   <TableCell align='center'>{note.createdAt}</TableCell>
