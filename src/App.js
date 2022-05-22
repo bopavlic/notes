@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import FavoriteNotes from './components/Notes/FavoriteNotes';
 import Notes from './components/Notes/Notes';
 import NotesEditForm from './components/Notes/NotesEditForm';
 import './styles/global.scss';
@@ -9,6 +10,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Notes />} />
         <Route path='/:id' element={<NotesEditForm />} />
+        <Route path='/favorites' element={<FavoriteNotes />} />
       </Routes>
     </div>
   );
