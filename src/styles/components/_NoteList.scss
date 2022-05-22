@@ -4,3 +4,9 @@
   justify-content: center;
   align-items: center;
 }
+
+.noteList__buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 80vw;
+}
