@@ -12,5 +12,5 @@ export const getCurrentDateAndTime = () => {
 
   return `${year}-${transformValue(month)}-${transformValue(
     day
-  )} ${hours}:${minutes}`;
+  )} ${transformValue(hours)}:${transformValue(minutes)}`;
 };
