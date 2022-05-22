@@ -1,0 +1,15 @@
+@import '../variables';
+
+.notesAddForm {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 2rem auto;
+  border: 1px solid $muiBlue;
+  border-radius: 0.4rem;
+  padding: 1rem;
+
+  &__input {
+    margin-bottom: 1rem;
+  }
+}
