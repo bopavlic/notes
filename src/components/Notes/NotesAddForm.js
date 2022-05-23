@@ -49,7 +49,7 @@ const NotesAddForm = () => {
         required
         data-qa='description'
       />
-      <Button variant='contained' type={'submit'} data-qa='add-note-button'>
+      <Button variant='contained' type='submit' data-qa='add-note-button'>
         Submit
       </Button>
     </form>

@@ -22,11 +22,11 @@ const notesSlice = createSlice({
     },
     favoriteNote(state, action) {
       const selectedNote = state.find((note) => note.id === action.payload);
-      if (selectedNote.favorite === false) {
+      if (!selectedNote.favorite) {
         selectedNote.favorite = true;
         return state;
       }
-      if (selectedNote.favorite === true) {
+      if (selectedNote.favorite) {
         selectedNote.favorite = false;
         return state;
       }

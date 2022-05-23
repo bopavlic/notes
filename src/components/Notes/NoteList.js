@@ -18,24 +18,14 @@ import { Button, Pagination, TextField } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { filterRow } from '../../helpers/filterRow';
 import { handleDownloadFile } from '../../helpers/handleDownloadFile';
+import { initialCurrentPage, initialNotesPerPage, mainRow } from './consts';
 
 const NoteList = () => {
   const [searchValue, setSearchValue] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [notesPerPage] = useState(2);
+  const [currentPage, setCurrentPage] = useState(initialCurrentPage);
+  const [notesPerPage] = useState(initialNotesPerPage);
   const notes = useSelector((state) => state.notes);
   const dispatch = useDispatch();
-
-  const mainRow = [
-    'ID',
-    'Created at',
-    'Title',
-    'Description',
-    'Favorite',
-    'Edit',
-    'Delete',
-    'Download',
-  ];
 
   const handleFavoriteNote = (id) => {
     dispatch(favoriteNote(id));
@@ -59,6 +49,7 @@ const NoteList = () => {
   };
 
   return (
+    notes &&
     notes.length > 0 && (
       <Box className='noteList'>
         <TextField
