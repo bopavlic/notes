@@ -45,9 +45,9 @@ const NoteList = () => {
     dispatch(deleteNote(id));
   };
 
-  const indexOfLastPost = currentPage * notesPerPage;
-  const indexOfFirstNotes = indexOfLastPost - notesPerPage;
-  const currentNotes = notes.slice(indexOfFirstNotes, indexOfLastPost);
+  const indexOfLastNote = currentPage * notesPerPage;
+  const indexOfFirstNote = indexOfLastNote - notesPerPage;
+  const currentNotes = notes.slice(indexOfFirstNote, indexOfLastNote);
 
   const handlePaginationLength = () => {
     return Number(Math.ceil(notes.length / notesPerPage));

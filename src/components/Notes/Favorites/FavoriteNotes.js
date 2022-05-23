@@ -5,7 +5,7 @@ import FavoriteNote from './FavoriteNote';
 
 const FavoriteNotes = () => {
   const notes = useSelector((state) => state.notes);
-  const favoriteList = notes.filter((note) => note.favorite === true);
+  const favoriteList = notes.filter(({ favorite }) => favorite === true);
 
   return (
     <Box className='favoriteNotes'>
