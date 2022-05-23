@@ -2,6 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Docker
+
+Create docker image: 
+### docker build -t docker-notes-image .
+
+Run docker container:
+### docker run -d -p 3000:3000 --name  docker-notes-container docker-notes-image 
+
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -9,10 +19,6 @@ In the project directory, you can run:
 ### `yarn`
 
 Installs a folder named "node_modules" so you can start the app.
-
-### `docker run -d -p 3000:3000 --name container-docker-notes docker-notes`
-Runs the docker at localhost:3000.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ### `yarn start`
 
