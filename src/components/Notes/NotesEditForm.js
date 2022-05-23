@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -32,6 +32,12 @@ const NotesEditForm = () => {
     [formValues, currentNote]
   );
 
+  useEffect(() => {
+    if (!currentNote) {
+      navigate('/');
+    }
+  }, [currentNote, navigate]);
+
   return (
     <form onSubmit={handleFormSubmit} className='notesAddForm'>
       <TextField
@@ -41,7 +47,7 @@ const NotesEditForm = () => {
         InputProps={{
           className: 'notesAddForm__input',
         }}
-        defaultValue={currentNote.title}
+        defaultValue={currentNote?.title}
         onChange={handleFieldChange}
         required
       />
@@ -54,7 +60,7 @@ const NotesEditForm = () => {
         InputProps={{
           className: 'notesAddForm__input',
         }}
-        defaultValue={currentNote.description}
+        defaultValue={currentNote?.description}
         onChange={handleFieldChange}
         required
       />
