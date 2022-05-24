@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Live version
+
+Open [https://notes-seven-orpin.vercel.app/](https://notes-seven-orpin.vercel.app/) to view it in your browser.
+
 ## Docker
 
 Create docker image: 
